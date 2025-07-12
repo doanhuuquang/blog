@@ -14,10 +14,3 @@ export interface Post {
   image?: string;
   slug: string;
 }
-
-export type PostCardVariant =
-  | "default"
-  | "compact"
-  | "featured"
-  | "minimal"
-  | "horizontal";
