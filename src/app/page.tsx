@@ -44,7 +44,7 @@ export default async function IndexPage() {
     slug: "sample-post",
   };
   return (
-    <main className="mx-auto min-h-screen max-w-7xl p-3 space-x-3 space-y-15">
+    <main className="mx-auto min-h-screen max-w-7xl p-3 space-y-15">
       <div className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           <PostCardCompact post={post} />
