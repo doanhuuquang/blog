@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, Clock } from "lucide-react";
+import { Calendar, Clock, Clock4 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Post, PostCardVariant } from "@/types/post";
@@ -12,7 +12,7 @@ interface PostCardProps {
   className?: string;
 }
 
-export function PostCard({
+export function PostCard1({
   post,
   variant = "default",
   className,
@@ -214,3 +214,92 @@ export function PostCard({
     </Card>
   );
 }
+
+function PostCard({
+  className,
+  post,
+  direction = "vertical",
+}: PostCardProps & { direction?: "horizontal" | "vertical" }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className={cn(
+        "group grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
+        className,
+        direction === "horizontal"
+          ? "grid-cols-2 grid-rows-1"
+          : "grid-cols-1 grid-rows-2"
+      )}
+    >
+      <div
+        className={cn(
+          "relative aspect-[4/2] w-full h-full flex-shrink-0 rounded-sm overflow-hidden transition-all duration-300",
+          direction === "horizontal"
+            ? "group-hover:rounded-br-none group-hover:rounded-tr-none "
+            : "group-hover:rounded-br-none group-hover:rounded-bl-none "
+        )}
+      >
+        <Image
+          src={post.image || "/placeholder.svg"}
+          alt={post.title}
+          fill
+          className="object-cover"
+        />
+        <div className="absolute top-2 left-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px]">
+          {post.category}
+        </div>
+        <div className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px] flex items-center gap-1">
+          <Clock4 className="size-2" />
+          {post.readTime} phút đọc
+        </div>
+      </div>
+      <div className="flex-1 space-y-3 p-2">
+        <div className="flex items-center gap-2 text-[10px] uppercase">
+          <p className="line-clamp-1">{post.publishedAt}</p>
+          <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
+          <p className="line-clamp-1">
+            <span className="text-muted-foreground">POST BY </span>
+            {post.author.name}
+          </p>
+        </div>
+        <p className="line-clamp-2 font-bold">{post.title}</p>
+        {direction === "horizontal" && (
+          <p className="text-[11px] line-clamp-2 text-primary/80">
+            {post.excerpt}
+          </p>
+        )}
+      </div>
+    </Link>
+  );
+}
+
+function PostCardCompact({ className, post }: PostCardProps) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className={cn(
+        "group grid grid-cols-3 h-full items-center gap-3 w-full rounded-sm hover:bg-accent transition-all duration-300 ",
+        className
+      )}
+    >
+      <div className="relative col-span-1 aspect-[4/3] h-full w-full flex-shrink-0 rounded-sm group-hover:rounded-br-none group-hover:rounded-tr-none transition-all duration-300 overflow-hidden">
+        <Image
+          src={post.image || "/placeholder.svg"}
+          alt={post.title}
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="col-span-2 space-y-1 p-2 h-full">
+        <div className="flex items-center gap-2 text-muted-foreground text-[11px] uppercase">
+          <p className="line-clamp-1">{post.publishedAt}</p>
+          <span className="w-[1px] h-[10px] bg-muted-foreground rotate-30"></span>
+          <p className="line-clamp-1">{post.author.name}</p>
+        </div>
+        <p className="line-clamp-2 text-sm font-bold">{post.title}</p>
+      </div>
+    </Link>
+  );
+}
+
+export { PostCard, PostCardCompact };
