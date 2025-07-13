@@ -1,16 +1,14 @@
+import { Author } from "@/types/author";
+import { Category } from "@/types/category";
+
 export interface Post {
-  id: string;
   title: string;
   excerpt: string;
   content: string;
-  author: {
-    name: string;
-    avatar: string;
-  };
+  author: Author;
   publishedAt: string;
   readTime: number;
-  category: string;
-  tags: string[];
-  image?: string;
+  category: Category[];
+  image: string;
   slug: string;
 }

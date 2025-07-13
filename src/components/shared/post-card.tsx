@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Clock4, Eye, MessageSquare } from "lucide-react";
@@ -18,11 +20,9 @@ function PostCard({
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
+        " group overflow-hidden grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
         className,
-        direction === "horizontal"
-          ? "grid-cols-2 grid-rows-1"
-          : "grid-cols-1 grid-rows-2"
+        direction === "horizontal" ? "grid-cols-2 grid-rows-1" : ""
       )}
     >
       <div
@@ -34,27 +34,27 @@ function PostCard({
         )}
       >
         <Image
-          src={post.image || "/placeholder.svg"}
+          src={post.image || "/place-holder.svg"}
           alt={post.title}
           fill
           className="object-cover"
         />
         <div className="absolute top-2 left-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px]">
-          {post.category}
+          {post.category.map((cat) => (
+            <span key={cat.name} className="mr-1">
+              {cat.name}
+            </span>
+          ))}
         </div>
         <div className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px] flex items-center gap-1">
           <Clock4 className="size-2" />
           {post.readTime} phút đọc
         </div>
       </div>
-      <div
-        className={cn(
-          "flex-1 grid  p-2",
-          direction === "horizontal" ? "grid-rows-3" : "grid-rows-2"
-        )}
-      >
+
+      <div className="flex-1 h-full p-2 space-y-2">
         <div className="flex items-center gap-2 text-[10px] uppercase">
-          <p className="line-clamp-1">{post.publishedAt}</p>
+          <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
           <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
           <p className="line-clamp-1">
             <span className="text-muted-foreground">POST BY </span>
@@ -63,7 +63,7 @@ function PostCard({
         </div>
         <p className="line-clamp-2 font-bold min-h-12">{post.title}</p>
         {direction === "horizontal" && (
-          <p className="text-[11px] line-clamp-2 text-primary/80">
+          <p className="text-[11px] line-clamp-2 text-primary/80 min-h-[33px]">
             {post.excerpt}
           </p>
         )}
@@ -77,13 +77,13 @@ function PostCardCompact({ className, post }: PostCardProps) {
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group grid grid-cols-3 h-full items-center gap-3 w-full rounded-sm hover:bg-accent transition-all duration-300 ",
+        "group overflow-hidden grid grid-cols-3 h-full items-center gap-3 w-full rounded-sm hover:bg-accent transition-all duration-300 ",
         className
       )}
     >
       <div className="relative col-span-1 aspect-[4/3] h-full w-full flex-shrink-0 rounded-sm group-hover:rounded-br-none group-hover:rounded-tr-none transition-all duration-300 overflow-hidden">
         <Image
-          src={post.image || "/placeholder.svg"}
+          src={post.image || "/place-holder.svg"}
           alt={post.title}
           fill
           className="object-cover"
@@ -91,7 +91,7 @@ function PostCardCompact({ className, post }: PostCardProps) {
       </div>
       <div className="col-span-2 space-y-1 p-2 h-full">
         <div className="flex items-center gap-2 text-muted-foreground text-[11px] uppercase">
-          <p className="line-clamp-1">{post.publishedAt}</p>
+          <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
           <span className="w-[1px] h-[10px] bg-muted-foreground rotate-30"></span>
           <p className="line-clamp-1">{post.author.name}</p>
         </div>
@@ -110,33 +110,36 @@ function PostCardFeatured({
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group grid gap-3 h-full min-h-[250px] w-full rounded-sm hover:bg-accent transition-all duration-300",
+        "group overflow-hidden grid gap-3 h-full min-h-[250px] w-full rounded-sm hover:bg-accent transition-all duration-300",
         className,
-        isCarouselItem ? "relative" : "grid-rows-3"
+        isCarouselItem ? "relative" : "grid-rows-2"
       )}
     >
       <div
         className={cn(
-          "relative row-span-2 aspect-[4/2] w-full h-full flex-shrink-0 rounded-sm overflow-hidden transition-all duration-300 ",
+          "relative row-span-1 aspect-[4/2] w-full h-full flex-shrink-0 rounded-sm overflow-hidden transition-all duration-300 ",
           !isCarouselItem &&
             "group-hover:rounded-br-none group-hover:rounded-bl-none"
         )}
       >
         <Image
-          src={post.image || "/placeholder.svg"}
+          src={post.image || "/place-holder.svg"}
           alt={post.title}
           fill
           className="object-cover"
         />
         <div className="absolute top-2 left-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px]">
-          {post.category}
+          {post.category.map((cat) => (
+            <span key={cat.name} className="mr-1">
+              {cat.name}
+            </span>
+          ))}
         </div>
         <div className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px] flex items-center gap-1">
           <Clock4 className="size-2" />
           {post.readTime} phút đọc
         </div>
       </div>
-
       <div
         className={cn(
           "flex-1 space-y-5 p-2",
@@ -146,7 +149,7 @@ function PostCardFeatured({
       >
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 text-xs uppercase">
-            <p className="line-clamp-1">{post.publishedAt}</p>
+            <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
             <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
             <p className="line-clamp-1">{post.author.name}</p>
           </div>

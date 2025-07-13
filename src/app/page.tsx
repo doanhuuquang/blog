@@ -1,14 +1,8 @@
-// import Link from "next/link";
-// import { type SanityDocument } from "next-sanity";
+import { type SanityDocument } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/client";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-// import { client } from "@/sanity/client";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import {
   PostCard,
   PostCardCompact,
@@ -16,54 +10,75 @@ import {
 } from "@/components/shared/post-card";
 import { Post } from "@/types/post";
 
-// const POSTS_QUERY = `*[
-//   _type == "post"
-//   && defined(slug.current)
-// ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-// const options = { next: { revalidate: 30 } };
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{
+  _id, 
+  title, 
+  excerpt,
+  slug,
+  publishedAt,
+  readTime,
+  image,
+  author->{
+    name
+  },
+  category[]->{
+    name,
+    description
+  }
+}`;
+const options = { next: { revalidate: 30 } };
+const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
 
-export default async function IndexPage() {
-  // const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
-  const post: Post = {
-    id: "",
-    title: "Sample Post Sample Post Sample Post Sample Post Sample Post",
-    excerpt: "This is a sample post excerpt.",
-    content:
-      "This is the full content of the sample post. This is the full content of the sample post. This is the full content of the sample post.",
-    author: {
-      name: "Doan Huu Quang",
-      avatar: "/placeholder-avatar.png",
-    },
-    publishedAt: "Thang 1, 2023",
-    readTime: 5,
-    category: "Category Name",
-    tags: ["tag1", "tag2"],
-    image:
-      "https://i.pinimg.com/736x/ca/0c/dc/ca0cdcc069a5587eb0565de20e7ad1eb.jpg",
-    slug: "sample-post",
-  };
+export default async function Page() {
+  const sanityPosts: SanityDocument[] = await client.fetch<SanityDocument[]>(
+    POSTS_QUERY,
+    {},
+    options
+  );
+  const posts: Post[] = sanityPosts.map((doc) => ({
+    title: doc.title || "",
+    excerpt: doc.excerpt || "",
+    content: doc.content || "",
+    author: doc.author || { name: "Unknown Author" },
+    publishedAt: doc.publishedAt || "",
+    readTime: doc.readTime || 0,
+    category: doc.category || [],
+    image: doc.image ? urlFor(doc.image)?.url() || "" : "",
+    slug: doc.slug?.current || doc.slug || "",
+  }));
+
+  console.log(posts);
+
   return (
     <main className="mx-auto min-h-screen max-w-7xl p-3 space-y-15">
       <div className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          <PostCardCompact post={post} />
-          <PostCardCompact post={post} />
-          <PostCardCompact post={post} />
-          <PostCardCompact post={post} />
+          {posts.map((post) => (
+            <PostCardCompact key={post.slug} post={post} />
+          ))}
         </div>
-
         <Carousel>
           <CarouselContent>
-            <CarouselItem>
-              <PostCardFeatured post={post} isCarouselItem={true} />
-            </CarouselItem>
-            <CarouselItem>
-              <PostCardFeatured post={post} isCarouselItem={true} />
-            </CarouselItem>
-            <CarouselItem>
-              <PostCardFeatured post={post} isCarouselItem={true} />
-            </CarouselItem>
+            {posts.map((post) => (
+              <CarouselItem key={post.slug}>
+                <PostCardFeatured post={post} isCarouselItem={true} />
+              </CarouselItem>
+            ))}
           </CarouselContent>
           <CarouselPrevious className="left-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
           <CarouselNext className="right-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
@@ -73,22 +88,25 @@ export default async function IndexPage() {
       <div className="space-y-5">
         <h2 className="text-2xl font-bold">Bài viết nổi bật</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          <PostCard post={post} />
-          <PostCard post={post} />
-          <PostCard post={post} />
-          <PostCard post={post} />
-          <PostCard post={post} />
+          {posts.map((post) => (
+            <PostCard key={post.slug} post={post} />
+          ))}
         </div>
       </div>
 
       <div className="space-y-5">
         <h2 className="text-2xl font-bold">Biên tập lựa chọn</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-3 lg:gap-3 gap-10">
-          <PostCardFeatured post={post} />
+          {(() => {
+            const featuredPost = posts.pop();
+            return featuredPost ? (
+              <PostCardFeatured post={featuredPost} />
+            ) : null;
+          })()}
           <div className="grid grid-cols-1 gap-3">
-            <PostCard post={post} direction="horizontal" />
-            <PostCard post={post} direction="horizontal" />
-            <PostCard post={post} direction="horizontal" />
+            {posts.map((post) => (
+              <PostCard key={post.slug} post={post} direction="horizontal" />
+            ))}
           </div>
         </div>
       </div>
