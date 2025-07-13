@@ -151,7 +151,10 @@ function PostCardFeatured({
           <div className="flex items-center gap-2 text-xs uppercase">
             <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
             <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
-            <p className="line-clamp-1">{post.author.name}</p>
+            <p className="line-clamp-1">
+              <span className="text-muted-foreground">POST BY </span>{" "}
+              {post.author.name}
+            </p>
           </div>
           <div className="flex items-center gap-2 text-xs uppercase">
             <p className="flex items-center gap-1">

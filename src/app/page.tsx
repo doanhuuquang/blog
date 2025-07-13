@@ -9,14 +9,7 @@ import {
   PostCardFeatured,
 } from "@/components/shared/post-card";
 import { Post } from "@/types/post";
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import PostCarousel from "@/components/shared/post-carousel";
 
 const POSTS_QUERY = `*[
   _type == "post"
@@ -62,8 +55,6 @@ export default async function Page() {
     slug: doc.slug?.current || doc.slug || "",
   }));
 
-  console.log(posts);
-
   return (
     <main className="mx-auto min-h-screen max-w-7xl p-3 space-y-15">
       <div className="space-y-5">
@@ -72,17 +63,7 @@ export default async function Page() {
             <PostCardCompact key={post.slug} post={post} />
           ))}
         </div>
-        <Carousel>
-          <CarouselContent>
-            {posts.map((post) => (
-              <CarouselItem key={post.slug}>
-                <PostCardFeatured post={post} isCarouselItem={true} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
-          <CarouselNext className="right-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
-        </Carousel>
+        <PostCarousel posts={posts} />
       </div>
 
       <div className="space-y-5">
@@ -95,7 +76,7 @@ export default async function Page() {
       </div>
 
       <div className="space-y-5">
-        <h2 className="text-2xl font-bold">Biên tập lựa chọn</h2>
+        <h2 className="text-2xl font-bold">Đề xuất</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-3 lg:gap-3 gap-10">
           {(() => {
             const featuredPost = posts.pop();
