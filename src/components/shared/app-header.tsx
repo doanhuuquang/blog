@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function AppHeader() {
   return (
-    <div className="w-full h-fit bg-accent/60 dark:bg-background/60 backdrop-blur-lg border-b-[1px] sticky lg:-top-[100px] md:-top-[100px] top-0 z-100">
+    <div className="w-full h-fit bg-background backdrop-blur-lg border-b-[1px] sticky lg:-top-[100px] md:-top-[100px] top-0 z-100">
       <header className="w-full max-w-7xl m-auto px-3 py-5 lg:grid md:grid hidden grid-cols-3 items-center">
         {/* Social links */}
         <SocialLinks className="flex justify-start" />
