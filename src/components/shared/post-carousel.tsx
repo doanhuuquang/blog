@@ -11,7 +11,11 @@ import {
 import { Post } from "@/types/post";
 import { PostCardFeatured } from "@/components/shared/post-card";
 
-export default function PostCarousel({ posts }: { posts: Post[] }) {
+interface PostCarouselProps {
+  posts: Post[];
+}
+
+export default function PostCarousel({ posts }: PostCarouselProps) {
   return (
     <Carousel
       opts={{
@@ -23,6 +27,7 @@ export default function PostCarousel({ posts }: { posts: Post[] }) {
           delay: 3000,
         }),
       ]}
+      className="rounded-sm overflow-hidden"
     >
       <CarouselContent>
         {posts.map((post) => (
@@ -31,8 +36,8 @@ export default function PostCarousel({ posts }: { posts: Post[] }) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
-      <CarouselNext className="right-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20 backdrop-blur-lg" />
+      <CarouselPrevious className="left-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20" />
+      <CarouselNext className="right-2 rounded-sm w-5 h-14 px-4 py-5 bg-primary/20" />
     </Carousel>
   );
 }

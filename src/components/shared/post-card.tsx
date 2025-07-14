@@ -117,7 +117,7 @@ function PostCardFeatured({
     >
       <div
         className={cn(
-          "relative row-span-1 aspect-[4/2] w-full h-full flex-shrink-0 rounded-sm overflow-hidden transition-all duration-300 ",
+          "relative overflow-hidden row-span-1 aspect-[4/2] w-full h-full flex-shrink-0 rounded-sm transition-all duration-300 ",
           !isCarouselItem &&
             "group-hover:rounded-br-none group-hover:rounded-bl-none"
         )}
@@ -128,31 +128,54 @@ function PostCardFeatured({
           fill
           className="object-cover"
         />
-        <div className="absolute top-2 left-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px]">
+        {isCarouselItem && (
+          <div className="w-full h-full absolute top-0 left-0 bg-black/30"></div>
+        )}
+        <div
+          className={cn(
+            "absolute rounded-full bg-black/20 backdrop-blur-lg  text-white  flex items-center gap-1",
+            isCarouselItem
+              ? " lg:text-xs text-[8px] lg:py-2 lg:px-4 py-1 px-2 lg:top-4 top-2 lg:left-4 left-2"
+              : " text-[8px] py-1 px-2 top-2 left-2"
+          )}
+        >
           {post.category.map((cat) => (
             <span key={cat.name} className="mr-1">
               {cat.name}
             </span>
           ))}
         </div>
-        <div className="absolute top-2 right-2 rounded-full bg-black/20 backdrop-blur-lg py-1 px-2 text-white text-[8px] flex items-center gap-1">
-          <Clock4 className="size-2" />
+        <div
+          className={cn(
+            "absolute rounded-full bg-black/20 backdrop-blur-lg  text-white  flex items-center gap-1",
+            isCarouselItem
+              ? " lg:text-xs text-[8px] lg:py-2 lg:px-4 py-1 px-2 lg:top-4 top-2 lg:right-4 right-2"
+              : " text-[8px] py-1 px-2 top-2 right-2"
+          )}
+        >
+          <Clock4 className={isCarouselItem ? "lg:size-4 size-2" : "size-2"} />
           {post.readTime} phút đọc
         </div>
       </div>
       <div
         className={cn(
-          "flex-1 space-y-5 p-2",
+          "flex-1 space-y-5 lg:p-4 p-2",
           isCarouselItem &&
-            "absolute bottom-0 pt-20 left-0 w-full bg-gradient-to-t from-black/80 rounded-b-sm to-transparent text-white"
+            "absolute w-full lg:max-w-1/2 bottom-0 left-0 bg-gradient-to-t text-white"
         )}
       >
         <div className="flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-2 text-xs uppercase">
             <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
             <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
-            <p className="line-clamp-1">
-              <span className="text-muted-foreground">POST BY </span>{" "}
+            <p className="line-clamp-1 flex gap-1">
+              <span
+                className={
+                  isCarouselItem ? "text-white/80" : "text-muted-foreground"
+                }
+              >
+                POST BY
+              </span>
               {post.author.name}
             </p>
           </div>
@@ -168,10 +191,15 @@ function PostCardFeatured({
           </div>
         </div>
 
-        <p className="line-clamp-2 lg:text-2xl md:text-xl font-bold">
+        <p className="line-clamp-2 lg:text-2xl md:text-xl font-bold min-h-12">
           {post.title}
         </p>
-        <p className="text-xs line-clamp-2 text-muted-foreground">
+        <p
+          className={cn(
+            "text-xs line-clamp-2 min-h-8",
+            isCarouselItem ? "text-white/80" : "text-muted-foreground"
+          )}
+        >
           {post.excerpt}
         </p>
         <p

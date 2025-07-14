@@ -1,69 +1,29 @@
-import { type SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
-import { client } from "@/sanity/client";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-
 import {
   PostCard,
   PostCardCompact,
   PostCardFeatured,
 } from "@/components/shared/post-card";
-import { Post } from "@/types/post";
 import PostCarousel from "@/components/shared/post-carousel";
-
-const POSTS_QUERY = `*[
-  _type == "post"
-  && defined(slug.current)
-]|order(publishedAt desc)[0...12]{
-  _id, 
-  title, 
-  excerpt,
-  slug,
-  publishedAt,
-  readTime,
-  image,
-  author->{
-    name
-  },
-  category[]->{
-    name,
-    description
-  }
-}`;
-const options = { next: { revalidate: 30 } };
-const { projectId, dataset } = client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
+import {
+  getPosts,
+  getCarouselPosts,
+  getCompactPosts,
+} from "@/lib/sanity-utils";
 
 export default async function Page() {
-  const sanityPosts: SanityDocument[] = await client.fetch<SanityDocument[]>(
-    POSTS_QUERY,
-    {},
-    options
-  );
-  const posts: Post[] = sanityPosts.map((doc) => ({
-    title: doc.title || "",
-    excerpt: doc.excerpt || "",
-    content: doc.content || "",
-    author: doc.author || { name: "Unknown Author" },
-    publishedAt: doc.publishedAt || "",
-    readTime: doc.readTime || 0,
-    category: doc.category || [],
-    image: doc.image ? urlFor(doc.image)?.url() || "" : "",
-    slug: doc.slug?.current || doc.slug || "",
-  }));
+  const posts = await getPosts();
+  const carouselPosts = await getCarouselPosts();
+  const compactPosts = await getCompactPosts();
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl p-3 space-y-15">
       <div className="space-y-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {posts.map((post) => (
+          {compactPosts.map((post) => (
             <PostCardCompact key={post.slug} post={post} />
           ))}
         </div>
-        <PostCarousel posts={posts} />
+        <PostCarousel posts={carouselPosts} />
       </div>
 
       <div className="space-y-5">

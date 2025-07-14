@@ -47,7 +47,7 @@ export default function AppNav({ className }: { className?: string }) {
           </Link>
         ))}
       </div>
-      <Button variant={"ghost"}>
+      <Button variant={"ghost"} className="translate-x-3">
         <Search />
       </Button>
     </nav>

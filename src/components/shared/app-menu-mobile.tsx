@@ -27,7 +27,7 @@ export function AppMenuMobile() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="ghost" className="-translate-x-3">
           <Menu />
         </Button>
       </DrawerTrigger>
