@@ -8,12 +8,14 @@ import {
   getPosts,
   getCarouselPosts,
   getCompactPosts,
+  getRecommendPosts,
 } from "@/lib/sanity-utils";
 
 export default async function Page() {
   const posts = await getPosts();
   const carouselPosts = await getCarouselPosts();
   const compactPosts = await getCompactPosts();
+  const recommendPosts = await getRecommendPosts();
 
   return (
     <main className="mx-auto min-h-screen max-w-7xl p-3 space-y-15">
@@ -39,13 +41,13 @@ export default async function Page() {
         <h2 className="text-2xl font-bold">Đề xuất</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 md:gap-3 lg:gap-3 gap-10">
           {(() => {
-            const featuredPost = posts.pop();
+            const featuredPost = recommendPosts.pop();
             return featuredPost ? (
               <PostCardFeatured post={featuredPost} />
             ) : null;
           })()}
           <div className="grid grid-cols-1 gap-3">
-            {posts.map((post) => (
+            {recommendPosts.map((post) => (
               <PostCard key={post.slug} post={post} direction="horizontal" />
             ))}
           </div>

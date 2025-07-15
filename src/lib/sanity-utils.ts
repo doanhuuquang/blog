@@ -8,6 +8,7 @@ import {
   COMPACT_POST_QUERY,
   POSTS_QUERY,
   POST_QUERY,
+  RECOMMEND_POST_QUERY,
 } from "./sanity-queries";
 
 const { projectId, dataset } = client.config();
@@ -83,6 +84,18 @@ export async function getPostsByCategory(categoryId: string): Promise<Post[]> {
 export async function getCompactPosts(): Promise<Post[]> {
   const compactPosts: SanityDocument[] = await client.fetch(
     COMPACT_POST_QUERY,
+    {},
+    {
+      next: { revalidate: 30 },
+    }
+  );
+
+  return compactPosts.flatMap((doc) => doc.posts.map(transformPost));
+}
+
+export async function getRecommendPosts(): Promise<Post[]> {
+  const compactPosts: SanityDocument[] = await client.fetch(
+    RECOMMEND_POST_QUERY,
     {},
     {
       next: { revalidate: 30 },

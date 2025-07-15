@@ -54,6 +54,14 @@ export const COMPACT_POST_QUERY = groq`
       }
     }`;
 
+export const RECOMMEND_POST_QUERY = groq`
+  *[
+    _type == "recommendPost"] {
+      posts[]->{
+        ${POST_FIELDS}
+      }
+    }`;
+
 export const CAROUSEL_QUERY = groq` 
     *[
     _type == "carousel"]{
