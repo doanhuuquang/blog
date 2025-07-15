@@ -3,10 +3,9 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import AppLogo from "@/components/shared/app-logo";
 import { AppMenuMobile } from "@/components/shared/app-menu-mobile";
+import { AppSearch } from "@/components/shared/app-search";
 
 export const navLinks = [
   { name: "Home", href: "/" },
@@ -47,9 +46,8 @@ export default function AppNav({ className }: { className?: string }) {
           </Link>
         ))}
       </div>
-      <Button variant={"ghost"} className="translate-x-3">
-        <Search />
-      </Button>
+
+      <AppSearch />
     </nav>
   );
 }
