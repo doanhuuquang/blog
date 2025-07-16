@@ -70,3 +70,17 @@ export const CAROUSEL_QUERY = groq`
         }
     }
 `;
+
+export const SEARCH_QUERY = groq`
+  *[
+    _type == "post"
+    && defined(slug.current)
+    && (title match "*" + $searchString + "*" 
+    || excerpt match "*" + $searchString + "*"
+    || content match "*" + $searchString + "*"
+    || author->name match "*" + $searchString + "*"
+    || category[]->name match "*" + $searchString + "*")
+  ]|order(publishedAt desc) {
+      ${POST_FIELDS}
+    }
+`;

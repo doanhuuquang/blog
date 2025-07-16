@@ -9,6 +9,7 @@ import {
   POSTS_QUERY,
   POST_QUERY,
   RECOMMEND_POST_QUERY,
+  SEARCH_QUERY,
 } from "./sanity-queries";
 
 const { projectId, dataset } = client.config();
@@ -115,4 +116,16 @@ export async function getCarouselPosts(): Promise<Post[]> {
   );
 
   return carouselPosts.flatMap((doc) => doc.posts.map(transformPost));
+}
+
+export async function searchPosts(searchString: string): Promise<Post[]> {
+  const searchedPosts: SanityDocument[] = await client.fetch(
+    SEARCH_QUERY,
+    { searchString },
+    {
+      next: { revalidate: 30 },
+    }
+  );
+
+  return searchedPosts.map(transformPost);
 }

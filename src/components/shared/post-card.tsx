@@ -215,4 +215,28 @@ function PostCardFeatured({
   );
 }
 
-export { PostCard, PostCardCompact, PostCardFeatured };
+function PostCardMinimal({ post, className }: PostCardProps) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className={cn(
+        "group overflow-hidden grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
+        className
+      )}
+    >
+      <div className="flex-1 h-full p-3 space-y-2">
+        <div className="flex items-center gap-2 text-[10px] uppercase">
+          <p className="line-clamp-1">{post.publishedAt.substring(0, 10)}</p>
+          <span className="w-[1px] h-[11px] bg-muted-foreground rotate-30"></span>
+          <p className="line-clamp-1">
+            <span className="text-muted-foreground">POST BY </span>
+            {post.author.name}
+          </p>
+        </div>
+        <p className="line-clamp-2 font-bold min-h-12">{post.title}</p>
+      </div>
+    </Link>
+  );
+}
+
+export { PostCard, PostCardCompact, PostCardFeatured, PostCardMinimal };
