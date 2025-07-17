@@ -3,6 +3,7 @@ import { Manrope, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import AppHeader from "@/components/shared/app-header";
+import { Toaster } from "@/components/ui/sonner";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -37,6 +38,7 @@ export default function RootLayout({
         >
           <AppHeader />
           <main className="my-5">{children}</main>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

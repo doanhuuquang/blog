@@ -18,7 +18,7 @@ function PostCard({
 }: PostCardProps & { direction?: "horizontal" | "vertical" }) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/post/${post.slug}`}
       className={cn(
         " group overflow-hidden grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
         className,
@@ -75,7 +75,7 @@ function PostCard({
 function PostCardCompact({ className, post }: PostCardProps) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/post/${post.slug}`}
       className={cn(
         "group overflow-hidden grid grid-cols-3 h-full items-center gap-3 w-full rounded-sm hover:bg-accent transition-all duration-300 ",
         className
@@ -108,7 +108,7 @@ function PostCardFeatured({
 }: PostCardProps & { isCarouselItem?: boolean }) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/post/${post.slug}`}
       className={cn(
         "group overflow-hidden grid gap-3 h-full min-h-[250px] w-full rounded-sm hover:bg-accent transition-all duration-300",
         className,
@@ -218,7 +218,7 @@ function PostCardFeatured({
 function PostCardMinimal({ post, className }: PostCardProps) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
+      href={`/post/${post.slug}`}
       className={cn(
         "group overflow-hidden grid gap-3 h-full w-full rounded-sm hover:bg-accent transition-all duration-300",
         className

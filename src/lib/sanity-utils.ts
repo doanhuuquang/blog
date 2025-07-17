@@ -23,7 +23,10 @@ export function transformPost(doc: SanityDocument): Post {
     title: doc.title || "",
     excerpt: doc.excerpt || "",
     content: doc.content || "",
-    author: doc.author || "",
+    author: {
+      name: doc.author?.name || "",
+      avatar: doc.author?.avatar ? urlFor(doc.author.avatar)?.url() || "" : "",
+    },
     publishedAt: doc.publishedAt || "",
     readTime: doc.readTime || 0,
     category: doc.category || [],

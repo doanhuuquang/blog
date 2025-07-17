@@ -9,7 +9,8 @@ const POST_FIELDS = groq`
   readTime,
   image,
   author->{
-    name
+    name,
+    avatar
   },
   category[]->{
     name,
