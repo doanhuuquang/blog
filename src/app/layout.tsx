@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import AppHeader from "@/components/shared/app-header";
 import { Toaster } from "@/components/ui/sonner";
+import AppFooter from "@/components/shared/app-footer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,6 +39,7 @@ export default function RootLayout({
         >
           <AppHeader />
           <main className="my-5">{children}</main>
+          <AppFooter />
           <Toaster />
         </ThemeProvider>
       </body>

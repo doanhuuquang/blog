@@ -8,10 +8,10 @@ import { AppMenuMobile } from "@/components/shared/app-menu-mobile";
 import { AppSearch } from "@/components/shared/app-search";
 
 export const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "Trang chủ", href: "/" },
   { name: "Blog", href: "/blog" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Về tôi", href: "/about" },
+  { name: "Liên hệ", href: "/contact" },
 ];
 
 export default function AppNav({ className }: { className?: string }) {

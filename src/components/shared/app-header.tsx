@@ -21,6 +21,7 @@ export default function AppHeader() {
         <div className="flex justify-end h-full items-center gap-3">
           <ModeSwitch />
           <div className="w-[1px] h-[20px] bg-accent"></div>
+
           <Button className="rounded-full">{"Let's Talk!"}</Button>
         </div>
       </header>

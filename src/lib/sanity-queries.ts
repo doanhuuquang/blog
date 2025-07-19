@@ -85,3 +85,12 @@ export const SEARCH_QUERY = groq`
       ${POST_FIELDS}
     }
 `;
+
+export const CATEGORY_QUERY = groq`
+  *[
+    _type == "category"
+  ]|order(name desc){
+    name,
+    description
+  }
+`;

@@ -5,12 +5,14 @@ import { Post } from "@/types/post";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import {
   CAROUSEL_QUERY,
+  CATEGORY_QUERY,
   COMPACT_POST_QUERY,
   POSTS_QUERY,
   POST_QUERY,
   RECOMMEND_POST_QUERY,
   SEARCH_QUERY,
 } from "./sanity-queries";
+import { Category } from "@/types/category";
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -32,6 +34,13 @@ export function transformPost(doc: SanityDocument): Post {
     category: doc.category || [],
     image: doc.image ? urlFor(doc.image)?.url() || "" : "",
     slug: doc.slug?.current || doc.slug || "",
+  };
+}
+
+export function transformCategory(doc: SanityDocument): Category {
+  return {
+    name: doc.name || "",
+    description: doc.description || "",
   };
 }
 
@@ -131,4 +140,16 @@ export async function searchPosts(searchString: string): Promise<Post[]> {
   );
 
   return searchedPosts.map(transformPost);
+}
+
+export async function getCategories(): Promise<Category[]> {
+  const sanityCategories: SanityDocument[] = await client.fetch(
+    CATEGORY_QUERY,
+    {},
+    {
+      next: { revalidate: 30 },
+    }
+  );
+
+  return sanityCategories.map(transformCategory);
 }
