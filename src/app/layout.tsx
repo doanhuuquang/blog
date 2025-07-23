@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppHeader />
-          <main className="my-5">{children}</main>
+          <main className="min-h-[calc(100vh-433.19px)]">{children}</main>
           <AppFooter />
           <Toaster />
         </ThemeProvider>

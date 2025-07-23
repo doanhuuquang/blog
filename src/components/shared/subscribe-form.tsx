@@ -76,22 +76,22 @@ export default function SubscribeForm() {
             onCheckedChange={() => setIsChecked(!isChecked)}
           />
           <Label htmlFor="terms">
-            <p className="text-muted-foreground text-xs">
-              Bằng việc nhấn vào nút Đăng ký, bạn đã chắc chắn rằng bạn đã đọc
-              và đồng ý với
+            <p className="text-muted-foreground text-xs space-x-1">
+              <span>
+                Bằng việc nhấn vào nút Đăng ký, bạn đã chắc chắn rằng bạn đã đọc
+                và đồng ý với
+              </span>
               <Link
                 href={"/"}
                 className="font-semibold text-primary underline underline-offset-1"
               >
-                {" "}
-                Chính sách bảo mật{" "}
+                Chính sách bảo mật
               </Link>
-              và
+              <span>và</span>
               <Link
                 href={"/"}
                 className="font-semibold text-primary underline underline-offset-1"
               >
-                {" "}
                 Điều khoản sử dụng
               </Link>
             </p>
