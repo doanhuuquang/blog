@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <div className="w-full lg:h-[calc(100vh-161.8px)] h-[calc(100vh-69px)] relative">
+    <div className="w-full h-[calc(100vh-80px)] relative">
       <video
         src="assets/videos/hero.mp4"
         autoPlay

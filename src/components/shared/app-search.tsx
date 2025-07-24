@@ -66,11 +66,11 @@ export function AppSearch() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <div className="lg:bg-accent md:bg-accent bg-transparent lg:translate-x-0 md:translate-x-0 translate-x-3 rounded-sm flex items-center pr-3">
+        <div className="lg:bg-accent bg-transparent lg:translate-x-0 translate-x-3 rounded-sm flex items-center pr-3">
           <Input
             type="text"
             placeholder="Khám phá thêm bài đọc..."
-            className="lg:block md:block hidden"
+            className="lg:block md:hidden hidden"
             readOnly
           />
           <Search className="size-4" />

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Manrope, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import AppHeader from "@/components/shared/app-header";
 import { Toaster } from "@/components/ui/sonner";
+import AppHeader from "@/components/shared/app-header-1";
 import AppFooter from "@/components/shared/app-footer";
 
 const manrope = Manrope({
