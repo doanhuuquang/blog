@@ -21,7 +21,7 @@ export default function AppNav({ className }: { className?: string }) {
           key={link.name}
           href={link.href}
           className={cn(
-            "",
+            "text-sm",
             link.href === pathName
               ? "text-primary font-semibold"
               : "text-muted-foreground hover:text-primary ease-in-out duration-300"
