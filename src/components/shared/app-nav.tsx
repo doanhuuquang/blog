@@ -15,7 +15,7 @@ export default function AppNav({ className }: { className?: string }) {
   const pathName = usePathname();
 
   return (
-    <nav className={cn("flex gap-3 uppercase", className)}>
+    <nav className={cn("flex gap-5 uppercase", className)}>
       {navLinks.map((link) => (
         <Link
           key={link.name}
