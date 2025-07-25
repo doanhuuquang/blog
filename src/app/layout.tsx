@@ -3,7 +3,7 @@ import { Manrope, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import AppHeader from "@/components/shared/app-header-1";
+import AppHeader from "@/components/shared/app-header";
 import AppFooter from "@/components/shared/app-footer";
 
 const manrope = Manrope({
