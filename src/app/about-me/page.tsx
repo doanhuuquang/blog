@@ -2,7 +2,7 @@ export default function AboutMe() {
   return (
     <main className="space-y-10">
       <div className="relative w-full h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0D41E1] to-[#07C8F9]">
-        <div className="flex z-1 flex-col items-center justify-center p-3 text-[#ffffff] backdrop-blur-3xl w-full h-full">
+        <div className="flex z-1 flex-col items-center justify-center p-3 text-[#ffffff] backdrop-blur-[200px] w-full h-full">
           <p className="text-2xl">{"Hey There, I'm"}</p>
           <p className="text-[120px] font-bold uppercase font-bebas-neue text-base/35">
             Quang
@@ -17,8 +17,8 @@ export default function AboutMe() {
           style={{ animationDuration: "20s" }}
         >
           <div className="w-full h-full relative">
-            <div className="absolute top-0 left-0 lg:w-[500px] w-[300px] lg:h-[500px] h-[300px] bg-[#f72585] animate-spin square-to-circle glow-effect"></div>
-            <div className="absolute bottom-0 right-0 lg:w-[500px] w-[300px] lg:h-[500px] h-[300px] bg-gradient-to-b from-[#7209b7] to-[#3a0ca3] animate-spin square-to-circle rounded-full glow-effect"></div>
+            <div className="absolute top-0 left-0  w-1/2 h-full bg-[#f72585] glow-effect"></div>
+            <div className="absolute bottom-0 right-0 w-1/2 h-full bg-[#7209b7] glow-effect"></div>
           </div>
         </div>
       </div>
