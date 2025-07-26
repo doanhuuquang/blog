@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Category } from "@/types/category";
 import { Post } from "@/types/post";
-import { Divide } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 export default function Blog() {
