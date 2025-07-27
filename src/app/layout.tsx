@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${manrope.className} ${dancingScript.variable} ${bebasNeue.variable} antialiased min-w-[300px] min-h-[200px]`}
+        className={`${manrope.className} ${dancingScript.variable} ${bebasNeue.variable}  antialiased min-w-[300px] min-h-[200px]`}
       >
         <ThemeProvider
           attribute="class"

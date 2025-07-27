@@ -134,16 +134,3 @@
     scrollbar-width: none;
   }
 }
-
-@keyframes square-to-circle {
-  0% {
-    border-radius: 5%;
-  }
-  100% {
-    border-radius: 50%;
-  }
-}
-
-.square-to-circle {
-  animation: square-to-circle 10s ease-in-out infinite alternate;
-}

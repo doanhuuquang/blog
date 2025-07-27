@@ -1,10 +1,15 @@
+import Image from "next/image";
+
+const socialCardClassName =
+  "hover:scale-120 hover:shadow-2xl rounded-lg cursor-pointer transition-transform duration-500";
+
 export default function AboutMe() {
   return (
     <main className="space-y-10">
-      <div className="relative w-full h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0D41E1] to-[#07C8F9]">
-        <div className="flex z-1 flex-col items-center justify-center p-3 text-[#ffffff] backdrop-blur-[200px] w-full h-full">
+      <div className="w-full min-h-[calc(100vh-80px)] h-fit p-3 grid lg:grid-cols-2 grid-cols-1 overflow-hidden bg-[url(/assets/images/about-me-hero-section-cover.svg)] bg-no-repeat bg-cover bg-center">
+        <div className="flex z-1 flex-col items-center justify-center text-[#202D4E]">
           <p className="text-2xl">{"Hey There, I'm"}</p>
-          <p className="text-[120px] font-bold uppercase font-bebas-neue text-base/35">
+          <p className="lg:text-[80px] md:text-[70px] text-[50px] font-bold uppercase">
             Quang
           </p>
           <p className="max-w-sm text-center">
@@ -12,13 +17,37 @@ export default function AboutMe() {
             trong cuộc sống
           </p>
         </div>
-        <div
-          className="w-full h-full animate-spin z-0 absolute"
-          style={{ animationDuration: "20s" }}
-        >
-          <div className="w-full h-full relative">
-            <div className="absolute top-0 left-0  w-1/2 h-full bg-[#f72585] glow-effect"></div>
-            <div className="absolute bottom-0 right-0 w-1/2 h-full bg-[#7209b7] glow-effect"></div>
+        <div className="flex items-center justify-center">
+          <div className="w-fit max-w-4/6 grid grid-cols-2 lg:gap-5 gap-3 rotate-x-50 rotate-z-45 ">
+            <Image
+              src="/assets/images/3d-social-card/Github.svg"
+              alt="Quang"
+              width={200}
+              height={200}
+              className={socialCardClassName}
+            />
+            <Image
+              src="/assets/images/3d-social-card/Insta.svg"
+              alt="Quang"
+              width={200}
+              height={200}
+              className={socialCardClassName}
+            />
+            <Image
+              src="/assets/images/3d-social-card/Facebook.svg"
+              alt="Quang"
+              width={200}
+              height={200}
+              className={socialCardClassName}
+            />
+
+            <Image
+              src="/assets/images/3d-social-card/Twitter.svg"
+              alt="Quang"
+              width={200}
+              height={200}
+              className={socialCardClassName}
+            />
           </div>
         </div>
       </div>

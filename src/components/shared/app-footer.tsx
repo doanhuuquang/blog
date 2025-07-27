@@ -23,8 +23,9 @@ export default async function AppFooter() {
           <div className="space-y-3 lg:p-5 p-3">
             <AppLogo />
             <p className="text-sm text-muted-foreground">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-              minima dolore voluptatem eligendi nemo enim modi, voluptas
+              Viết là cách mình hiểu thế giới, còn đọc là cách bạn lắng nghe tâm
+              hồn. Chào mừng bạn đến với góc nhỏ của mình – nơi những câu chuyện
+              bắt đầu.
             </p>
             <SocialLinks />
           </div>

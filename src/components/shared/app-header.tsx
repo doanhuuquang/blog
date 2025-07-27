@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AppHeader() {
   return (
-    <div className="w-full h-fit bg-background backdrop-blur-lg border-b-[1px] sticky top-0 z-100">
+    <div className="w-full h-fit bg-background sticky top-0 z-100">
       <header className="w-full max-w-7xl m-auto px-3 h-20 flex items-center justify-between">
         <div className="lg:hidden block">
           <AppMenuMobile />
