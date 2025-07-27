@@ -4,13 +4,13 @@ import { Label } from "@/components/ui/label";
 import { Mail, MapPin, PhoneCall, SendHorizonal } from "lucide-react";
 
 const inputClassName =
-  "px-5 py-7 bg-white/60 rounded-md border-1 w-full outline-none";
+  "px-5 py-7 bg-background/60 rounded-md text-foreground border-1 w-full outline-none";
 
 export default function ContactPage() {
   return (
     <main className="w-full mt-5 p-3">
-      <div className="w-full shadow-2xl shadow-[#FAA4BD50] bg-[#FAA4BD] rounded-md max-w-7xl h-full m-auto grid lg:grid-cols-7 grid-cols-1 lg:gap-10 overflow-hidden">
-        <div className="col-span-3 w-full h-full bg-[#F564A9] shadow-2xl shadow-[#F564A9] text-[#533B4D] lg:p-10 p-5 flex flex-col justify-between gap-10">
+      <div className="w-full bg-accent rounded-md max-w-7xl border h-full m-auto grid lg:grid-cols-7 grid-cols-1 lg:gap-10 overflow-hidden">
+        <div className="col-span-3 w-full h-full bg-background  lg:p-10 p-5 flex flex-col justify-between gap-10">
           <div className="space-y-3">
             <p className="text-3xl font-black">Thông tin liên hệ</p>
             <p className="opacity-75">
@@ -34,7 +34,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="col-span-4 lg:space-y-10 space-y-5 lg:p-10 p-3 lg:mt-0 mt-10 text-black">
+        <div className="col-span-4 lg:space-y-10 space-y-5 lg:p-10 p-3 lg:mt-0 mt-10">
           <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-10 gap-5">
             <div className="space-y-2">
               <Label htmlFor="lastName">Họ</Label>
@@ -83,8 +83,8 @@ export default function ContactPage() {
             />
           </div>
 
-          <Button className="float-right px-20 py-7 rounded-sm bg-blue-700 hover:bg-blue-800 text-white">
-            Gủi tin nhắn
+          <Button className="float-right w-1/2 py-7 rounded-sm bg-blue-700 hover:bg-blue-800 text-white">
+            Gửi tin nhắn
             <SendHorizonal />
           </Button>
         </div>
