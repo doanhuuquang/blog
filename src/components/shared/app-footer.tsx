@@ -9,7 +9,7 @@ import { Category } from "@/types/category";
 export const navLinks = [
   { name: "Trang chủ", href: "/" },
   { name: "Blog", href: "/blog" },
-  { name: "Về tôi", href: "/about" },
+  { name: "Về tôi", href: "/about-me" },
   { name: "Liên hệ", href: "/contact" },
 ];
 

@@ -56,9 +56,18 @@ export default function AboutMe() {
           <div className="p-10 space-y-10 bg-[#D5FF3F] text-[#161717] rounded-sm">
             <p className="text-center font-bold text-3xl">Về tôi</p>
             <p>
-              {
-                "Hi there! I'm Rahul, a third-year Computer Science student at SRM Institute with a passion for crafting user-centric experiences. I specialize in UI/UX design, front-end development, and graphic design, with expertise in HTML, CSS, JavaScript, React, Node.js, Tailwind CSS, QML, and C++. I thrive on collaboration and bring experience in agile scrum methodologies. Beyond coding, I enjoy photography, graphic design, and exploring music. Let's connect and bring your digital visions to life"
-              }
+              Chào bạn! Mình là Đoàn Hữu Quang, hiện đang là sinh viên năm bốn
+              ngành Công nghệ phần mềm tại một trường đại học ở Hà Nội. Mình có
+              niềm đam mê trong việc tạo ra những trải nghiệm lấy người dùng làm
+              trung tâm. Mình chuyên về thiết kế UI/UX, phát triển giao diện
+              người dùng và thiết kế đồ họa, với kỹ năng vững vàng về HTML, CSS,
+              JavaScript, React, Node.js, Tailwind CSS, QML và C++. Mình làm
+              việc hiệu quả trong môi trường cộng tác và có kinh nghiệm với
+              phương pháp Agile Scrum. Ngoài việc lập trình, mình còn yêu thích
+              nhiếp ảnh, thiết kế đồ họa và khám phá âm nhạc. Mình cũng là một
+              người đam mê du lịch và thường xuyên chia sẻ trải nghiệm qua các
+              bài viết blog. Hãy cùng kết nối để hiện thực hóa những ý tưởng số
+              của bạn nhé!
             </p>
           </div>
         </div>
