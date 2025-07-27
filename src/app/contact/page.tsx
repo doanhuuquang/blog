@@ -83,8 +83,8 @@ export default function ContactPage() {
             />
           </div>
 
-          <Button className="float-right w-1/2 py-7 rounded-sm bg-blue-700 hover:bg-blue-800 text-white">
-            Gửi tin nhắn
+          <Button className="float-right w-1/2 py-7 rounded-sm bg-[#0065F8] hover:bg-[#0065F8] text-white">
+            <p className="uppercase">Gửi tin nhắn</p>
             <SendHorizonal />
           </Button>
         </div>
