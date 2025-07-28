@@ -13,7 +13,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import SocialLinks from "@/components/shared/social-links";
 import { ModeSwitch } from "@/components/shared/mode-switch";
 import { navLinks } from "@/components/shared/app-nav";
 import { usePathname } from "next/navigation";
@@ -40,7 +39,7 @@ export function AppMenuMobile() {
             <DrawerDescription>
               Chào mừng bạn đến với Blog cá nhân của mình.
             </DrawerDescription>
-            <SocialLinks className="items-center justify-center mt-4" />
+            {/* <SocialLinks className="items-center justify-center mt-4" /> */}
           </DrawerHeader>
           <div className="p-4 space-y-4">
             <div className="flex flex-col items-center justify-center gap-3">

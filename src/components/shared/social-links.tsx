@@ -1,5 +1,3 @@
-// "use client";
-
 import { getSocialMedias } from "@/lib/sanity-utils";
 import { cn } from "@/lib/utils";
 import { SocialMedia } from "@/types/social-media";
