@@ -1,58 +1,33 @@
-"use client";
+// "use client";
 
+import { getSocialMedias } from "@/lib/sanity-utils";
 import { cn } from "@/lib/utils";
+import { SocialMedia } from "@/types/social-media";
 import Image from "next/image";
 import Link from "next/link";
 
-const socialLinks = [
-  {
-    name: "GitHub",
-    href: "",
-    icon: "/assets/icons/github/github.svg",
-    iconDark: "/assets/icons/github/github-dark.svg",
-  },
-  {
-    name: "Facebook",
-    href: "https://facebook.com/yourprofile",
-    icon: "/assets/icons/facebook/facebook.svg",
-    iconDark: "/assets/icons/facebook/facebook-dark.svg",
-  },
-  {
-    name: "X (Twitter)",
-    href: "https://x.com/yourprofile",
-    icon: "/assets/icons/x/x.svg",
-    iconDark: "/assets/icons/x/x-dark.svg",
-  },
-  {
-    name: "Instagram",
-    href: "https://instagram.com/yourprofile",
-    icon: "/assets/icons/instagram/instagram.svg",
-    iconDark: "/assets/icons/instagram/instagram-dark.svg",
-  },
-];
+export default async function SocialLinks({
+  className,
+}: {
+  className?: string;
+}) {
+  const socialMedias: SocialMedia[] = await getSocialMedias();
 
-export default function SocialLinks({ className }: { className?: string }) {
   return (
     <div className={cn("flex gap-3 items-center", className)}>
-      {socialLinks.map((link) => {
+      {socialMedias.map((socialMedia) => {
         return (
-          <Link key={link.href} href={link.href} className="w-fit h-fit">
-            <div className="w-5 h-5 relative">
-              <Image
-                src={link.icon}
-                alt={`${link.name} icon`}
-                width={20}
-                height={20}
-                className="absolute inset-0 dark:opacity-0 opacity-100 transition-opacity duration-0"
-              />
-              <Image
-                src={link.iconDark}
-                alt={`${link.name} icon`}
-                width={20}
-                height={20}
-                className="absolute inset-0 dark:opacity-100 opacity-0 transition-opacity duration-0"
-              />
-            </div>
+          <Link
+            key={socialMedia.url}
+            href={socialMedia.url}
+            className="w-fit h-fit"
+          >
+            <Image
+              src={socialMedia.icon}
+              alt={`${socialMedia.platform} icon`}
+              width={25}
+              height={25}
+            />
           </Link>
         );
       })}

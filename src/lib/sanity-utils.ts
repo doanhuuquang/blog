@@ -4,6 +4,7 @@ import { client } from "@/sanity/client";
 import { Post } from "@/types/post";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import {
+  BLOG_OWNER_INFO_QUERY,
   CAROUSEL_QUERY,
   CATEGORY_QUERY,
   COMPACT_POST_QUERY,
@@ -11,8 +12,11 @@ import {
   POST_QUERY,
   RECOMMEND_POST_QUERY,
   SEARCH_QUERY,
+  SOCIAL_MEDIA_QUERY,
 } from "./sanity-queries";
 import { Category } from "@/types/category";
+import { SocialMedia } from "@/types/social-media";
+import { BlogOwnerInfo } from "@/types/blog-owner-info";
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -37,12 +41,35 @@ export function transformPost(doc: SanityDocument): Post {
   };
 }
 
+export function transformSocialMedia(doc: SanityDocument): SocialMedia {
+  return {
+    platform: doc.platform || "",
+    url: doc.url || "",
+    icon: doc.icon ? urlFor(doc.icon)?.url() || "" : "",
+  };
+}
+
 export function transformCategory(doc: SanityDocument): Category {
   return {
     name: doc.name || "",
     description: doc.description || "",
   };
 }
+
+export function transformBlogOwnerInfo(doc: SanityDocument): BlogOwnerInfo {
+  return {
+    logo: doc.logo ? urlFor(doc.logo)?.url() || "" : "",
+    avatar: doc.avatar ? urlFor(doc.avatar)?.url() || "" : "",
+    name: doc.name || "",
+    email: doc.email || "",
+    address: doc.address || "",
+    phone: doc.phone || "",
+    introduction: doc.introduction || "",
+    bio: doc.bio || "",
+  };
+}
+
+///////////////////////////////////////////////////////////////////////////////////
 
 export async function getPosts(): Promise<Post[]> {
   const sanityPosts: SanityDocument[] = await client.fetch(
@@ -152,4 +179,26 @@ export async function getCategories(): Promise<Category[]> {
   );
 
   return sanityCategories.map(transformCategory);
+}
+
+export async function getBlogOwnerInfo(): Promise<BlogOwnerInfo> {
+  const blogOwnerInfoSanity: SanityDocument = await client.fetch(
+    BLOG_OWNER_INFO_QUERY,
+    {},
+    {
+      next: { revalidate: 30 },
+    }
+  );
+  return transformBlogOwnerInfo(blogOwnerInfoSanity);
+}
+
+export async function getSocialMedias(): Promise<SocialMedia[]> {
+  const sanitySocialMedias: SanityDocument[] = await client.fetch(
+    SOCIAL_MEDIA_QUERY,
+    {},
+    {
+      next: { revalidate: 30 },
+    }
+  );
+  return sanitySocialMedias.map(transformSocialMedia);
 }

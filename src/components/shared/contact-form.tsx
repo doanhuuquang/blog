@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { LoaderCircle, SendHorizonal } from "lucide-react";
 import React from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -37,6 +38,13 @@ const formSchema = z.object({
   phone: z.string().min(10, {
     message: "Số điện thoại phải có ít nhất 10 chữ số.",
   }),
+  subject: z.enum([
+    "Trò chuyện",
+    "Hỏi đáp",
+    "Hỗ trợ",
+    "Liên hệ hợp tác",
+    "Khác",
+  ]),
   message: z.string().min(10, {
     message: "Tin nhắn phải có ít nhất 10 ký tự.",
   }),
@@ -87,6 +95,7 @@ export default function ContactForm() {
       firstName: "",
       lastName: "",
       message: "",
+      subject: "Trò chuyện",
     },
   });
 
@@ -104,6 +113,7 @@ export default function ContactForm() {
         email: values.email,
         phone: values.phone,
         message: values.message,
+        subject: values.subject,
       }),
     })
       .then((response) => response.json())
@@ -200,6 +210,60 @@ export default function ContactForm() {
             )}
           />
         </div>
+
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-wrap gap-5"
+                >
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <RadioGroupItem value="Trò chuyện" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Trò chuyện</FormLabel>
+                  </FormItem>
+
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <RadioGroupItem value="Hỏi đáp" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Hỏi đáp</FormLabel>
+                  </FormItem>
+
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <RadioGroupItem value="Hỗ trợ" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Hỗ trợ</FormLabel>
+                  </FormItem>
+
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <RadioGroupItem value="Liên hệ hợp tác" />
+                    </FormControl>
+                    <FormLabel className="font-normal">
+                      Liên hệ hợp tác
+                    </FormLabel>
+                  </FormItem>
+
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <RadioGroupItem value="Khác" />
+                    </FormControl>
+                    <FormLabel className="font-normal">Khác</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}

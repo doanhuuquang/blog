@@ -1,7 +1,10 @@
 import ContactForm from "@/components/shared/contact-form";
+import { getBlogOwnerInfo } from "@/lib/sanity-utils";
 import { Mail, MapPin, PhoneCall } from "lucide-react";
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const blogOwnerInfo = await getBlogOwnerInfo();
+
   return (
     <main className="w-full mt-5 p-3">
       <div className="w-full bg-accent rounded-md max-w-7xl border h-full m-auto grid lg:grid-cols-7 grid-cols-1 lg:gap-10 overflow-hidden">
@@ -16,15 +19,15 @@ export default function ContactPage() {
           <div className="space-y-5">
             <div className="flex gap-5">
               <PhoneCall size={20} />
-              <p>0336314376</p>
+              <p>{blogOwnerInfo.phone}</p>
             </div>
             <div className="flex gap-5">
               <Mail size={20} />
-              <p>doanhuuquang.dev@gmail.com</p>
+              <p>{blogOwnerInfo.email}</p>
             </div>
             <div className="flex gap-5">
               <MapPin size={20} />
-              <p>75 Cửu Việt 2, Trâu Quỳ, Gia Lâm, Hà Nội</p>
+              <p>{blogOwnerInfo.address}</p>
             </div>
           </div>
         </div>

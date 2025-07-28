@@ -20,13 +20,15 @@ export default async function AppFooter() {
     <div className="w-full p-3">
       <div className="w-full max-w-7xl border rounded-lg mx-auto">
         <div className="w-full grid lg:grid-cols-3 grid-cols-1">
-          <div className="space-y-3 lg:p-5 p-3">
-            <AppLogo />
-            <p className="text-sm text-muted-foreground">
-              Viết là cách mình hiểu thế giới, còn đọc là cách bạn lắng nghe tâm
-              hồn. Chào mừng bạn đến với góc nhỏ của mình – nơi những câu chuyện
-              bắt đầu.
-            </p>
+          <div className="space-y-5 lg:p-5 p-3">
+            <div>
+              <AppLogo />
+              <p className="text-sm text-muted-foreground">
+                Viết là cách mình hiểu thế giới, còn đọc là cách bạn lắng nghe
+                tâm hồn. Chào mừng bạn đến với góc nhỏ của mình – nơi những câu
+                chuyện bắt đầu.
+              </p>
+            </div>
             <SocialLinks />
           </div>
 

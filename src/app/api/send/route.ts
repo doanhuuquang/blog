@@ -12,6 +12,7 @@ type Payload = {
   email: string;
   phone: string;
   message: string;
+  subject: string;
 };
 
 export async function POST(req: NextRequest) {
@@ -21,7 +22,7 @@ export async function POST(req: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: `${body.firstName} <${FROM_EMAIL}>`,
       to: [TO_EMAIL],
-      subject: `Tin nhắn từ ${body.lastName} ${body.firstName}`,
+      subject: `${body.subject}`,
       react: EmailTemplate({
         firstName: body.firstName,
         lastName: body.lastName,

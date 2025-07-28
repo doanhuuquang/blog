@@ -94,3 +94,28 @@ export const CATEGORY_QUERY = groq`
     description
   }
 `;
+
+export const BLOG_OWNER_INFO_QUERY = groq`
+  *[
+    _type == "blogOwnerInfo"
+][0]{
+    logo,
+    avatar,
+    name,
+    email,
+    address,
+    phone,
+    introduction,
+    bio,
+  }
+`;
+
+export const SOCIAL_MEDIA_QUERY = groq`
+  *[
+    _type == "socialMedia"
+  ]|order(name desc){
+    platform,
+    url,
+    icon
+  }
+`;
