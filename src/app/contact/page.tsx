@@ -1,10 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Mail, MapPin, PhoneCall, SendHorizonal } from "lucide-react";
-
-const inputClassName =
-  "px-5 py-7 bg-background/60 rounded-md text-foreground border-1 w-full outline-none";
+import ContactForm from "@/components/shared/contact-form";
+import { Mail, MapPin, PhoneCall } from "lucide-react";
 
 export default function ContactPage() {
   return (
@@ -34,60 +29,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="col-span-4 lg:space-y-10 space-y-5 lg:p-10 p-3 lg:mt-0 mt-10">
-          <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-10 gap-5">
-            <div className="space-y-2">
-              <Label htmlFor="lastName">Họ</Label>
-              <Input
-                type="text"
-                id="lastName"
-                placeholder="Họ của bạn"
-                className={inputClassName}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="firstName">Tên</Label>
-              <Input
-                type="text"
-                id="firstName"
-                placeholder="Tên của bạn"
-                className={inputClassName}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                type="email"
-                id="email"
-                placeholder="vidu@gmail.com"
-                className={inputClassName}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="phone">Số điện thoại</Label>
-              <Input
-                type="number"
-                id="phone"
-                placeholder="Số điện thoại của bạn"
-                className={inputClassName}
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="message">Lời nhắn</Label>
-            <textarea
-              id="message"
-              placeholder="Nội dung lời nhắn của bạn"
-              className={inputClassName}
-            />
-          </div>
-
-          <Button className="float-right w-1/2 py-7 rounded-sm bg-[#0065F8] hover:bg-[#0065F8] text-white">
-            <p className="uppercase">Gửi tin nhắn</p>
-            <SendHorizonal />
-          </Button>
-        </div>
+        <ContactForm />
       </div>
     </main>
   );

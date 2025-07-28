@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -19,12 +19,12 @@ export default function Hero() {
           hồn. Chào mừng bạn đến với góc nhỏ của mình – nơi những câu chuyện bắt
           đầu.
         </p>
-        <Button
-          size={"lg"}
-          className="bg-white text-black hover:bg-gray-200 rounded-xs"
+        <Link
+          href={"/contact"}
+          className="flex gap-3 py-3 px-5 rounded-xs bg-white text-black hover:bg-gray-200"
         >
           Cho mình biết thêm suy nghĩ của bạn <ArrowUpRight />
-        </Button>
+        </Link>
       </div>
     </div>
   );
