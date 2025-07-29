@@ -14,13 +14,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ModeSwitch } from "@/components/shared/mode-switch";
-import { navLinks } from "@/components/shared/blog/app-nav";
+import { shopNavLinks } from "@/components/shared/shop/shop-nav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import AppLogo from "@/components/shared/blog/app-logo";
+import ShopLogo from "@/components/shared/shop/shop-logo";
 
-export function AppMenuMobile() {
+export function ShopMenuMobile() {
   const pathName = usePathname();
 
   return (
@@ -31,8 +31,8 @@ export function AppMenuMobile() {
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm space-y-5">
           <DrawerHeader>
-            <DrawerTitle>
-              <AppLogo size={25} className="justify-center" />
+            <DrawerTitle className="flex items-center justify-center mb-3">
+              <ShopLogo size={150} />
             </DrawerTitle>
             <DrawerDescription>
               Chào mừng bạn đến với Blog cá nhân của mình.
@@ -40,15 +40,15 @@ export function AppMenuMobile() {
           </DrawerHeader>
           <div className="p-4 space-y-4">
             <div className="flex flex-col items-center justify-center gap-3">
-              {navLinks.map((link) => (
+              {shopNavLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   className={cn(
                     "relative after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:content-[''] after:bg-gradient-to-r after:from-primary after:to-primary/50 after:rounded-full after:transition-all",
                     link.href === pathName
-                      ? "after:w-full"
-                      : "after:w-0 hover:after:w-full ease-in-out duration-300"
+                      ? "text-shop-primary"
+                      : "text-muted-foreground hover:text-shop-primary ease-in-out duration-300"
                   )}
                 >
                   {link.name}

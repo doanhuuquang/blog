@@ -18,7 +18,7 @@ import { PostCardMinimal } from "@/components/shared/blog/post-card";
 
 import type { Post } from "@/types/post";
 
-export function AppSearch() {
+export function ShopSearch() {
   const [searchedPosts, setSearchedPosts] = React.useState<Post[]>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [searchString, setSearchString] = React.useState<string>("");
@@ -66,15 +66,7 @@ export function AppSearch() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <div className="lg:bg-accent bg-transparent lg:translate-x-0 translate-x-3 rounded-sm flex items-center pr-3">
-          <Input
-            type="text"
-            placeholder="Khám phá thêm bài đọc..."
-            className="lg:block md:hidden hidden"
-            readOnly
-          />
-          <Search className="size-5" />
-        </div>
+        <Search className="size-5 hover:cursor-pointer" />
       </DrawerTrigger>
       <DrawerContent>
         <div className=" mx-auto w-full h-[75vh] max-w-lg flex flex-col">
