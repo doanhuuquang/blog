@@ -3,7 +3,6 @@
 import * as React from "react";
 import { Menu } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
@@ -17,7 +16,6 @@ import { ModeSwitch } from "@/components/shared/mode-switch";
 import { shopNavLinks } from "@/components/shared/shop/shop-nav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import ShopLogo from "@/components/shared/shop/shop-logo";
 
 export function ShopMenuMobile() {
@@ -31,11 +29,11 @@ export function ShopMenuMobile() {
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm space-y-5">
           <DrawerHeader>
-            <DrawerTitle className="flex items-center justify-center mb-3">
-              <ShopLogo size={150} />
+            <DrawerTitle className="flex items-center justify-center my-3">
+              <ShopLogo className="w-40" />
             </DrawerTitle>
             <DrawerDescription>
-              Chào mừng bạn đến với Blog cá nhân của mình.
+              Chào mừng bạn đến với Carton Sport
             </DrawerDescription>
           </DrawerHeader>
           <div className="p-4 space-y-4">
@@ -44,12 +42,11 @@ export function ShopMenuMobile() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={cn(
-                    "relative after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:content-[''] after:bg-gradient-to-r after:from-primary after:to-primary/50 after:rounded-full after:transition-all",
+                  className={
                     link.href === pathName
                       ? "text-shop-primary"
                       : "text-muted-foreground hover:text-shop-primary ease-in-out duration-300"
-                  )}
+                  }
                 >
                   {link.name}
                 </Link>
@@ -57,10 +54,8 @@ export function ShopMenuMobile() {
             </div>
           </div>
           <DrawerFooter>
-            <div className="flex justify-center h-full items-center gap-3">
+            <div className="flex justify-center items-center">
               <ModeSwitch />
-              <div className="w-[1px] h-[20px] bg-accent"></div>
-              <Button className="rounded-full">{"Let's Talk!"}</Button>
             </div>
           </DrawerFooter>
         </div>

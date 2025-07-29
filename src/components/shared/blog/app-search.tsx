@@ -3,11 +3,9 @@
 import * as React from "react";
 import { Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -101,11 +99,7 @@ export function AppSearch() {
               <div className="space-y-3">
                 {searchedPosts.length > 0 ? (
                   searchedPosts.map((post) => (
-                    <PostCardMinimal
-                      key={post.slug}
-                      post={post}
-                      className="border-b"
-                    />
+                    <PostCardMinimal key={post.slug} post={post} />
                   ))
                 ) : (
                   <p className="text-muted-foreground">
@@ -116,10 +110,7 @@ export function AppSearch() {
             )}
           </div>
 
-          <DrawerFooter className="flex-none relative">
-            <Button>Tìm kiếm</Button>
-            <div className="absolute z-50 -top-3 left-0 w-full h-3 bg-gradient-to-t from-background to-transparent"></div>
-          </DrawerFooter>
+          <div className="absolute z-50 bottom-0 left-0 w-full h-5 bg-gradient-to-t from-background to-transparent"></div>
         </div>
       </DrawerContent>
     </Drawer>

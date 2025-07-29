@@ -3,11 +3,9 @@
 import * as React from "react";
 import { Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -75,7 +73,7 @@ export function ShopSearch() {
             <div className="mt-2 bg-accent rounded-sm flex items-center pr-3">
               <Input
                 type="text"
-                placeholder="Khám phá thêm bài đọc..."
+                placeholder="Tìm kiếm sản phẩm..."
                 value={searchString}
                 onChange={(e) => handleInputChange(e.target.value)}
               />
@@ -101,17 +99,14 @@ export function ShopSearch() {
                   ))
                 ) : (
                   <p className="text-muted-foreground">
-                    Không tìm thấy bài viết
+                    Không tìm thấy sản phẩm
                   </p>
                 )}
               </div>
             )}
           </div>
 
-          <DrawerFooter className="flex-none relative">
-            <Button>Tìm kiếm</Button>
-            <div className="absolute z-50 -top-3 left-0 w-full h-3 bg-gradient-to-t from-background to-transparent"></div>
-          </DrawerFooter>
+          <div className="absolute z-50 bottom-0 left-0 w-full h-5 bg-gradient-to-t from-background to-transparent"></div>
         </div>
       </DrawerContent>
     </Drawer>

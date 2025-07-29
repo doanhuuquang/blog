@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 export const shopNavLinks = [
   { name: "Trang chủ", href: "/shop" },
-  { name: "Sản phẩm", href: "/product" },
+  { name: "Sản phẩm", href: "/products" },
   { name: "Về chúng tôi", href: "/about-we" },
   { name: "Liên hệ/Tư vấn", href: "/contact" },
   { name: "Blog", href: "/blog" },

@@ -57,7 +57,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.2035 0.0016 197.03);
-  --shop-primary: oklch(93.845% 0.2084 121.668);
+  --shop-primary: #b0e100;
   --primary-foreground: oklch(0.985 0 0);
   --shop-primary-foreground: oklch(20.352% 0.00157 197.844);
   --secondary: oklch(0.97 0 0);

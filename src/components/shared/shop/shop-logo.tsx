@@ -1,29 +1,22 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ShopLogo({
-  size = 56,
-  className,
-}: {
-  size?: number;
-  className?: string;
-}) {
+export default function ShopLogo({ className }: { className?: string }) {
   return (
-    <Link href={"/shop"} className={className}>
-      <div className="flex" style={{ width: size }}>
+    <Link href={"/shop"} className={cn("w-fit", className)}>
+      <div className="relative w-full h-10 flex">
         <Image
           alt="Carton Sport"
           src={"/assets/logos/shop/logo-carton-sport.svg"}
-          width={200}
-          height={100}
-          className="dark:hidden block"
+          fill
+          className="absolute dark:hidden block"
         />
         <Image
           alt="Carton Sport"
           src={"/assets/logos/shop/logo-dark-carton-sport.svg"}
-          width={200}
-          height={100}
-          className="dark:block hidden"
+          fill
+          className="absolute dark:block hidden"
         />
       </div>
     </Link>
