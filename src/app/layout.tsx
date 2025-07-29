@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Manrope, Dancing_Script, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
-import AppHeader from "@/components/shared/app-header";
-import AppFooter from "@/components/shared/app-footer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -43,10 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppHeader />
-          <Toaster />
-          <main className="min-h-[calc(100vh-433.19px)] pb-10">{children}</main>
-          <AppFooter />
+          {children}
         </ThemeProvider>
       </body>
     </html>
