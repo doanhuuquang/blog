@@ -14,11 +14,11 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ModeSwitch } from "@/components/shared/mode-switch";
-import { navLinks } from "@/components/shared/app-nav";
+import { navLinks } from "@/components/shared/blog/app-nav";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import AppLogo from "@/components/shared/app-logo";
+import AppLogo from "@/components/shared/blog/app-logo";
 
 export function AppMenuMobile() {
   const pathName = usePathname();

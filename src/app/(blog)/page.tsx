@@ -2,8 +2,8 @@ import {
   PostCard,
   PostCardCompact,
   PostCardFeatured,
-} from "@/components/shared/post-card";
-import PostCarousel from "@/components/shared/post-carousel";
+} from "@/components/shared/blog/post-card";
+import PostCarousel from "@/components/shared/blog/post-carousel";
 import {
   getPosts,
   getCarouselPosts,

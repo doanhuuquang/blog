@@ -1,4 +1,4 @@
-import Hero from "@/components/shared/hero";
+import Hero from "@/components/shared/blog/hero";
 
 export default async function PostLayout({
   children,

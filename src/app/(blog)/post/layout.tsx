@@ -1,4 +1,4 @@
-import { PostCard } from "@/components/shared/post-card";
+import { PostCard } from "@/components/shared/blog/post-card";
 import { getPosts } from "@/lib/sanity-utils";
 
 export default async function PostLayout({

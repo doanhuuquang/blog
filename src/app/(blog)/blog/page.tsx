@@ -1,6 +1,6 @@
 "use client";
 
-import { PostCard } from "@/components/shared/post-card";
+import { PostCard } from "@/components/shared/blog/post-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Category } from "@/types/category";

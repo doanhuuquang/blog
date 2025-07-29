@@ -1,4 +1,4 @@
-import ContactForm from "@/components/shared/contact-form";
+import ContactForm from "@/components/shared/blog/contact-form";
 import { getBlogOwnerInfo } from "@/lib/sanity-utils";
 import { Mail, MapPin, PhoneCall } from "lucide-react";
 

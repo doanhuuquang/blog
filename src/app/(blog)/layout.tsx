@@ -1,5 +1,5 @@
-import AppFooter from "@/components/shared/app-footer";
-import AppHeader from "@/components/shared/app-header";
+import AppFooter from "@/components/shared/blog/app-footer";
+import AppHeader from "@/components/shared/blog/app-header";
 import { Toaster } from "sonner";
 
 export default function RootLayout({
