@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { Menu } from "lucide-react";
+import { Menu, UserRound } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Drawer,
   DrawerContent,
@@ -45,10 +44,9 @@ export function AppMenuMobile() {
                   key={link.name}
                   href={link.href}
                   className={cn(
-                    "relative after:absolute after:left-0 after:-bottom-1 after:h-[1.5px] after:content-[''] after:bg-gradient-to-r after:from-primary after:to-primary/50 after:rounded-full after:transition-all",
                     link.href === pathName
-                      ? "after:w-full"
-                      : "after:w-0 hover:after:w-full ease-in-out duration-300"
+                      ? "text-primary font-semibold"
+                      : "text-muted-foreground hover:text-primary ease-in-out duration-300"
                   )}
                 >
                   {link.name}
@@ -60,7 +58,12 @@ export function AppMenuMobile() {
             <div className="flex justify-center h-full items-center gap-3">
               <ModeSwitch />
               <div className="w-[1px] h-[20px] bg-accent"></div>
-              <Button className="rounded-full">{"Let's Talk!"}</Button>
+              <Link
+                href={"/shop/account"}
+                className="flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2 rounded-sm"
+              >
+                Tài khoản <UserRound className="size-4" />
+              </Link>
             </div>
           </DrawerFooter>
         </div>

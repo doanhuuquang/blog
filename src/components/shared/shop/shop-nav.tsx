@@ -22,7 +22,7 @@ export default function ShopNav({ className }: { className?: string }) {
           key={link.name}
           href={link.href}
           className={cn(
-            "text-sm font-black",
+            "text-sm font-bold",
             link.href === pathName
               ? "text-shop-primary"
               : "text-muted-foreground hover:text-shop-primary ease-in-out duration-300"

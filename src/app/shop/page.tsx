@@ -1,3 +1,53 @@
 export default function ShopPage() {
-  return <p></p>;
+  return (
+    <>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+      <p>Hehehe</p>
+    </>
+  );
 }
