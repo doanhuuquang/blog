@@ -9,6 +9,7 @@ export const navLinks = [
   { name: "Blog", href: "/blog" },
   { name: "Về tôi", href: "/about-me" },
   { name: "Liên hệ", href: "/contact" },
+  { name: "Carton Sport", href: "/shop" },
 ];
 
 export default function AppNav({ className }: { className?: string }) {
